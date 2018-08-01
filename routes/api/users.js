@@ -5,6 +5,7 @@ const User = require('../../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
+const passport = require('passport');
 
 router.get('/test', (req,res) => res.json({msg:"User Works"}));
 
@@ -18,7 +19,7 @@ router.post('/register', (req,res) => {
           s: '200',
           r: 'pg',
           d: 'mm'
-        })
+        });
         const newUser = new User({
           name: req.body.name,
           email: req.body.email,

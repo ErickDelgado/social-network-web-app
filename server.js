@@ -6,12 +6,19 @@ const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 
 
 mongoose
   .connect(db)
   .then((err) => console.log('Mongo connected!'))
   .catch((err) => console.log(err));
+
+// Passport Middleware
+app.use(passport.initialize());
+
+// Passport config
+require('./config/passport')(passport);
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());

@@ -19,7 +19,7 @@ router.post('/register', (req,res) => {
           s: '200',
           r: 'pg',
           d: 'mm'
-        });
+        })
         const newUser = new User({
           name: req.body.name,
           email: req.body.email,
@@ -41,6 +41,7 @@ router.post('/register', (req,res) => {
 });
 
 router.post('/login', (req, res) => {
+
   const email = req.body.email;
   const password = req.body.password;
 
@@ -72,5 +73,13 @@ router.post('/login', (req, res) => {
         })
       })
 });
+
+// @route GET api/users/current
+// @desc Return Current UserSchema
+// @access Private
+
+router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
+  res.json({msg: ' Success'})
+})
 
 module.exports = router;

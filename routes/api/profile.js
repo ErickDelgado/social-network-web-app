@@ -3,6 +3,9 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
 
+// Load Validation
+const validateProfileInput = require('../../validations/profile');
+
 
 // Load Profile model
 const Profile = require('../../models/Profile');
@@ -33,6 +36,13 @@ router.get('/', passport.authenticate('jwt', {session:false}), (req, res) => {
 // @desc Create or Update users Profile
 // @access Private
 router.post('/', passport.authenticate('jwt', {session:false}), (req, res) => {
+
+  const {errors, isValid} = validateProfileInput(req.body);
+
+  // Check Validation
+  if(!isValid) {
+    return res.status(400).json(errors);
+  }
   // Get field
   const profileFields = {};
   profileFields.user = req.user.id;
@@ -67,7 +77,19 @@ router.post('/', passport.authenticate('jwt', {session:false}), (req, res) => {
         ).then(profile => res.json(profile))
       } else {
         //Create
+
+        // Check if handle exists
+        Profile.findOne({handle:profileFields.handle}).then(profile => {
+          if(profile) {
+            errors.handle = 'That handle already exists';
+            res.status(400).json(errors);
+          } else {
+            // Save profile
+            new Profile(profileFields).save().then(profile => res.json(profile))  
+          }
+        })
       }
+
     })
 })
 

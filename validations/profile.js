@@ -3,6 +3,7 @@ const isEmpty = require('./is-empty');
 
 module.exports = function validateProfileInput(data) {
   let errors = {};
+  
   // Ensuring we are testing a string
   // Validator can only be used in conjunction with strings
   data.handle = !isEmpty(data.handle) ? data.handle : '';

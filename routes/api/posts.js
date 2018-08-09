@@ -15,7 +15,7 @@ router.get('/test', (req,res) => res.json({msg:"Post Works"}));
 // @route POST api/posts
 // @desc Create posts
 // @access Private
-router.post('/', passport.authenticate('jwt'), {session:false}, (req, res) => {
+router.post('/', passport.authenticate('jwt', {session:false}), (req, res) => {
   const newPost = new Post({
     text: req.body.text,
     name: req.body.name,

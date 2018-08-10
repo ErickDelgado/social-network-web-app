@@ -8,8 +8,6 @@ const validateProfileInput = require('../../validations/profile');
 const validateExperienceInput = require('../../validations/experience');
 const validateEducationInput = require('../../validations/education');
 
-
-
 // Load Profile model
 const Profile = require('../../models/Profile');
 // Load User model

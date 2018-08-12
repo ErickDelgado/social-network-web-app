@@ -1,7 +1,7 @@
 {
   "name": "social-network-web-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Full stack Social Network implemented within the MERN framework. Built with protected routes, extensive input validation, password hashing, and other best practices revolving backend architecture.",
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
@@ -20,6 +20,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "eventemitter2": "^5.0.1",
     "express": "^4.16.3",
     "gravatar": "^1.6.0",
     "jsonwebtoken": "^8.3.0",

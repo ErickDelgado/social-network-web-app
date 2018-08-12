@@ -23,13 +23,13 @@ router.post('/register', (req,res) => {
   User.findOne({email: req.body.email})
     .then(user => {
       if (user) {
-        return res.status(400).json({email: 'Email already in use.'})
+        return res.status(400).json({email: 'Email already in use.'});
       } else {
         const avatar = gravatar.url('req.body.email', {
           s: '200',
           r: 'pg',
           d: 'mm'
-        })
+        });
         const newUser = new User({
           name: req.body.name,
           email: req.body.email,
@@ -96,7 +96,6 @@ router.post('/login', (req, res) => {
 // @route GET api/users/current
 // @desc Return current UserSchema
 // @access Private
-
 router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
   res.json({
     id: req.user.id,

@@ -9,7 +9,6 @@ const Post = require('../../models/Post');
 // Loading Profile model
 const Profile = require('../../models/Profile');
 
-
 // Loading input validator
 const validatePostInput = require('../../validations/post');
 

@@ -19,7 +19,6 @@ class App extends Component {
       <div className="container">
       <Route exact path="/register" component={Register}/>
       <Route exact path="/login" component={Login}/>
-
       </div>
       <Footer/>
       <h1>My react app</h1>

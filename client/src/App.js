@@ -21,7 +21,6 @@ class App extends Component {
       <Route exact path="/login" component={Login}/>
       </div>
       <Footer/>
-      <h1>My react app</h1>
       </div>
       </Router>
     );

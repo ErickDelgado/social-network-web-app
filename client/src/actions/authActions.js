@@ -3,14 +3,6 @@ import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
 
-// Set Logged in users
-export const setCurrentUser = (decoded) => {
-  return {
-    type: SET_CURRENT_USER,
-    payload: decoded
-  }
-}
-
 export const registerUser = (userData, history) => dispatch => {
   axios
     .post('/api/users/register', userData)
@@ -42,5 +34,13 @@ export const loginUser = userData => dispatch => {
         type: GET_ERRORS,
         payload: err.response.data
       })
-    )
+    );
+};
+
+// Set Logged in users
+export const setCurrentUser = (decoded) => {
+  return {
+    type: SET_CURRENT_USER,
+    payload: decoded
+  }
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import store from './store';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Landing from './components/layout/Landing';

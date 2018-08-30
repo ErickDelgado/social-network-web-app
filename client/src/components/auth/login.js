@@ -15,9 +15,13 @@ class Login extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-
-  componentWillReceiveProps() {
+  componentDidMount() {
     if(this.props.auth.isAuthenticated) {
+      this.props.history.push('/dashboard')
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.auth.isAuthenticated) {
       this.props.history.push('/dashboard')
     }
   }
@@ -25,7 +29,7 @@ class Login extends Component {
   onChange(e) {
     this.setState({[e.target.name]: e.target.value})
   }
-  
+
   onSubmit(e) {
     e.preventDefault();
 

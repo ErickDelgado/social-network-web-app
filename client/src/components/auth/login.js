@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {loginUser} from '../../actions/authActions';
-import classnames from 'classnames';
+import { connect } from ' react-redux';
+import { loginUser } from '../../actions';
 
 class Login extends Component {
   constructor() {
@@ -72,15 +71,13 @@ class Login extends Component {
   }
 };
 
-Login.propTypes = {
-  loginUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
-};
-
 const mapStateToProps = (state) => ({
-  auth:state.auth,
-  errors:state.errors
-});
+  auth: state.auth,
+  errors: state.errors
+})
+Login.PropTypes = {
+  auth: PropTypes.object.isRequired,
+  loginUser: PropTypes.func.isRequired
+}
 
-export default connect(mapStateToProps, {loginUser})(Login)
+export default connect(null, { loginUser })(Login);

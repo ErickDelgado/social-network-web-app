@@ -21,9 +21,11 @@ class Login extends Component {
       this.props.history.push('/dashboard')
     }
   }
+
   onChange(e) {
     this.setState({[e.target.name]: e.target.value})
   }
+  
   onSubmit(e) {
     e.preventDefault();
 

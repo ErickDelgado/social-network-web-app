@@ -51,7 +51,5 @@ export const logoutUser = () => dispatch => {
   // Remove auth headers for future requests
   setAuthToken(false);
   // Set current user to an empty object
-  dispatch(setCurrentUser({
-    
-  }))
+  dispatch(setCurrentUser({}))
 }
